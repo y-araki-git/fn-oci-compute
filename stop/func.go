@@ -63,7 +63,7 @@ func ociComputeEventHandler(ctx context.Context, in io.Reader, out io.Writer) {
 	json.NewDecoder(in).Decode(&updateInfo)
 	log.Println("UpdateInfo ", updateInfo)
 
-	_, updateErr := cc.InstanceAction(context.Background(), core.InstanceActionRequest{InstanceId: common.String(instance), Action: core.InstanceActionActionEnum("softstop") })
+	_, updateErr := cc.InstanceAction(context.Background(), core.InstanceActionRequest{InstanceId: common.String(instance), Action: core.InstanceActionActionEnum("stop") })
 
 	if updateErr != nil {
 		resp := FailedResponse{Message: "Problem stopping instance", Error: updateErr.Error()}
